@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Estetico Eden - Estetica Avanzata e Base</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8B9B6D;
+            --secondary: #E8F0E0;
+            --dark: #2C2C2C;
+            --light: #FAFAF8;
+            --accent: #A8BC8F;
+            --text: #4A4A4A;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .instagram-link {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .instagram-link:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .instagram-link svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .menu-icon {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .menu-icon span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-icon.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-icon.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #FAFAF8 0%, #E8F0E0 100%);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .hero-text h1 strong {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 155, 109, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ORARI SECTION */
+        .orari-section {
+            padding: 4rem 2rem;
+            background-color: white;
+            border-top: 1px solid rgba(139, 155, 109, 0.2);
+        }
+
+        .orari-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .orari-card {
+            padding: 2rem;
+            background: linear-gradient(135deg, #FAFAF8 0%, #E8F0E0 100%);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .orari-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(139, 155, 109, 0.2);
+        }
+
+        .orari-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .orari-card p {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .orari-label {
+            color: var(--primary);
+            font-weight: 600;
+            display: block;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            text-transform: uppercase;
+        }
+
+        /* INFO SECTION */
+        .info {
+            padding: 6rem 2rem;
+            background-color: var(--secondary);
+        }
+
+        .info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .info-text h2 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+
+        .info-text h2 strong {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .info-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .info-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(139, 155, 109, 0.2);
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-right: 0.5rem;
+        }
+
+        .socials {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .info-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-box h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .info-box p {
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* WHATSAPP BUBBLE */
+        .whatsapp-bubble {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 50;
+            box-shadow: 0 8px 25px rgba(139, 155, 109, 0.4);
+            text-decoration: none;
+        }
+
+        .whatsapp-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(139, 155, 109, 0.5);
+        }
+
+        .whatsapp-bubble svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem 0;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .info-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .orari-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://i.imgur.com/7hXr1Qh.png" alt="Centro Estetico Eden">
+            </div>
+            <div class="header-right">
+                <a href="https://www.instagram.com/eden.centro.estetico/" target="_blank" class="instagram-link" title="Instagram">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Bordo quadrato verde -->
+                        <rect x="2" y="2" width="20" height="20" rx="4"
+                              stroke="currentColor" stroke-width="1.8" fill="none"/>
+                        <!-- Cerchio fotocamera verde -->
+                        <circle cx="12" cy="12" r="4"
+                                stroke="currentColor" stroke-width="1.6" fill="none"/>
+                        <!-- Punto in alto a destra -->
+                        <circle cx="17" cy="7" r="1" fill="currentColor"/>
+                    </svg>
+                </a>
+                <div class="menu-icon" onclick="this.classList.toggle('active')">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="hero-subtitle">Centro Estetico Eden - Belotti Sara Fabiana</p>
+                <h1>Benvenuta all' <strong>Eden</strong></h1>
+                <p>Estetica avanzata e base in un'atmosfera di puro benessere. Trasformazione e armonia in ogni trattamento.</p>
+                <div class="cta-buttons">
+                    <a href="tel:3934789891" class="btn btn-primary">Chiama Ora</a>
+                    <a href="https://www.instagram.com/eden.centro.estetico/" class="btn btn-secondary">Scopri di Più</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://i.imgur.com/KE4ujWn.png" alt="Centro Estetico Eden">
+            </div>
+        </div>
+    </section>
+
+    <!-- ORARI SECTION -->
+    <section class="orari-section">
+        <div class="orari-container">
+            <div class="orari-card">
+                <h3>Martedì - Venerdì</h3>
+                <p style="font-size: 1.3rem; font-weight: 600; color: var(--primary);">8:30 - 19:00</p>
+                <span class="orari-label">Apertura completa</span>
+            </div>
+            <div class="orari-card">
+                <h3>Sabato</h3>
+                <p style="font-size: 1.3rem; font-weight: 600; color: var(--primary);">9:00 - 16:00</p>
+                <span class="orari-label">Mattino e Pomeriggio</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFO SECTION -->
+    <section class="info">
+        <div class="info-container">
+            <div class="info-text">
+                <h2>Ti aspettiamo a <strong>trovarci</strong></h2>
+                <ul class="info-list">
+                    <li><span class="info-label">Indirizzo:</span> Via Nigoline 28, Adro 25030</li>
+                    <li><span class="info-label">Telefono 1:</span> 393 478 9891</li>
+                    <li><span class="info-label">Telefono 2:</span> 030 745 7894</li>
+                    <li><span class="info-label">Specialità:</span> Estetica Avanzata e Base</li>
+                </ul>
+                <p style="font-size: 0.95rem; color: var(--text); margin-top: 1.5rem;">Contattaci via telefono o WhatsApp per prenotare il tuo appuntamento esclusivo presso il Centro Estetico Eden.</p>
+                <div class="socials">
+                    
+                </div>
+            </div>
+            <div class="info-box">
+                <h3>Pronta a Trasformarti?</h3>
+                <p>Prenota il tuo appuntamento esclusivo presso il Centro Estetico Eden e scopri i nostri trattamenti di estetica avanzata e base.</p>
+                <a href="https://wa.me/393934789891?text=Ciao%20Centro%20Estetico%20Eden%2C%20vorrei%20prenotare%20un%20appuntamento" class="btn btn-primary">Scrivi su WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHATSAPP BUBBLE -->
+    <a href="https://wa.me/393934789891?text=Ciao%20Centro%20Estetico%20Eden%2C%20come%20posso%20aiutarti%3F" target="_blank" class="whatsapp-bubble" title="Contattami su WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <!-- Cerchio verde -->
+            <circle cx="16" cy="16" r="16" fill="#8B9B6D" />
+            <!-- Icona WhatsApp bianca -->
+            <path
+                fill="#ffffff"
+                d="M21.6 10.4C20.4 9.2 18.8 8.5 17.1 8.5h-.1c-4 0-7.3 3.3-7.3 7.3 0 1.3.3 2.5.9 3.6l-1 3.7 3.8-1c1.1.6 2.3.9 3.5.9 4 0 7.3-3.3 7.3-7.3 0-1.7-.7-3.3-1.9-4.5zm-4.5 8.9c-.6.1-1.5 0-2.5-.4-1.3-.5-2.1-1.1-2.9-2-.4-.5-.7-1-1-1.6-.3-.6-.1-1 .1-1.3.2-.3.4-.5.6-.7.2-.2.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2.1-.4 0-.6-.1-.2-.5-1.3-.7-1.8-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.4 0 1.4 1 2.8 1.2 3.1.2.3 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2.1-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-1 1.2-.2.2-.3.2-.6.1z"
+            />
+        </svg>
+    </a>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Centro Estetico Eden - Belotti Sara Fabiana. Tutti i diritti riservati. | Via Nigoline 28, Adro 25030</p>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        const menuIcon = document.querySelector('.menu-icon');
+        menuIcon.addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
